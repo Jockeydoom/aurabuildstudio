@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Build Studio - App Development</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind theme to use Inter font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Updated Custom color palette for a darker, tech-focused look */
+        :root {
+            --color-primary: #4f46e5; /* Vibrant Indigo/Electric Blue */
+            --color-secondary: #06b6d4; /* Cyan/Neon Glow */
+            --color-background: #0f172a; /* Slate Black/Deep Dark Blue */
+            --color-card-bg: #1e293b; /* Darker Slate for cards */
+            --color-text: #e2e8f0; /* Light Gray for main text */
+        }
+        /* Custom Tailwind overrides */
+        .bg-primary { background-color: var(--color-primary); }
+        .text-primary { color: var(--color-primary); }
+        .bg-secondary { background-color: var(--color-secondary); }
+        .text-secondary { color: var(--color-secondary); }
+        .hover\:bg-primary-dark:hover { background-color: #4338ca; }
+        .bg-dark { background-color: var(--color-background); }
+        .text-light { color: var(--color-text); }
+        .bg-card { background-color: var(--color-card-bg); }
+        .border-secondary { border-color: var(--color-secondary); }
+        .ring-secondary { --tw-ring-color: var(--color-secondary); }
+
+        /* Custom glow effect for buttons/cards on hover */
+        .glow-hover {
+            transition: all 0.3s ease-in-out;
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 10px var(--color-secondary), 0 0 20px rgba(6, 182, 212, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* CSS for Fade-in animation on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-dark text-light">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-card shadow-xl shadow-black/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+                <!-- Logo -->
+                <div class="flex justify-start lg:w-0 lg:flex-1">
+                    <a href="#" class="flex items-center space-x-2">
+                        <span class="text-3xl font-extrabold text-dark bg-secondary p-2 rounded-lg">AB</span>
+                        <span class="text-2xl font-bold text-light">Aura Build Studio</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <nav id="nav-menu" class="hidden md:flex space-x-10">
+                    <a href="#services" class="text-base font-medium text-gray-400 hover:text-secondary transition duration-150">Services</a>
+                    <a href="#projects" class="text-base font-medium text-gray-400 hover:text-secondary transition duration-150">Portfolio</a>
+                    <a href="#about" class="text-base font-medium text-gray-400 hover:text-secondary transition duration-150">About Us</a>
+                    <a href="#contact" class="text-base font-medium text-gray-400 hover:text-secondary transition duration-150">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="bg-card rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-secondary focus:outline-none focus:ring-2 focus:ring-inset ring-secondary" aria-expanded="false">
+                        <!-- Icon (Hamburger) -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Flyout -->
+        <div id="mobile-menu" class="hidden absolute top-16 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+            <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-card divide-y-2 divide-gray-700">
+                <div class="pt-5 pb-6 px-5 space-y-6">
+                    <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-light hover:text-secondary hover:bg-gray-800">Services</a>
+                    <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-light hover:text-secondary hover:bg-gray-800">Portfolio</a>
+                    <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-light hover:text-secondary hover:bg-gray-800">About Us</a>
+                    <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-light hover:text-secondary hover:bg-gray-800">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section - Digital Grid Effect -->
+        <section class="relative pt-24 pb-40 overflow-hidden bg-primary shadow-2xl">
+            <!-- Digital Grid Background Overlay (Simplified using linear gradients) -->
+            <div class="absolute inset-0 z-0 opacity-20" style="
+                background: linear-gradient(0deg, var(--color-primary) 0%, transparent 100%),
+                            repeating-linear-gradient(
+                                0deg, 
+                                rgba(6, 182, 212, 0.2) 0px, 
+                                rgba(6, 182, 212, 0.2) 1px, 
+                                transparent 1px, 
+                                transparent 100px
+                            ),
+                            repeating-linear-gradient(
+                                90deg, 
+                                rgba(6, 182, 212, 0.2) 0px, 
+                                rgba(6, 182, 212, 0.2) 1px, 
+                                transparent 1px, 
+                                transparent 100px
+                            );
+            "></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 fade-in">
+                <div class="text-center">
+                    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                        Developing <span class="text-secondary tracking-wider">Innovation</span>, <br>Line by Digital Line.
+                    </h1>
+                    <p class="mt-3 max-w-md mx-auto text-lg text-indigo-200 sm:text-xl md:mt-5 md:max-w-3xl">
+                        Aura Build Studio delivers tailored mobile, web, and enterprise applications to drive digital transformation.
+                    </p>
+                    <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
+                        <div class="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
+                            <a href="#contact" class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-xl text-dark bg-secondary hover:bg-cyan-400 md:py-4 md:text-lg md:px-10 shadow-lg glow-hover transition duration-300">
+                                Start Your App Project
+                            </a>
+                            <a href="#services" class="flex items-center justify-center px-8 py-3 border border-secondary text-base font-medium rounded-xl text-secondary bg-transparent hover:bg-white/10 md:py-4 md:text-lg md:px-10 shadow-lg glow-hover transition duration-300">
+                                View Our Services
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-base text-secondary font-semibold tracking-wide uppercase">Our Expertise</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-light sm:text-4xl">
+                        Crafting Digital Experiences
+                    </p>
+                </div>
+
+                <div class="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3">
+                    <!-- Service Card 1: Mobile & Web App Development -->
+                    <div class="p-6 bg-card rounded-xl shadow-xl border border-gray-700 hover:border-secondary glow-hover fade-in">
+                        <div class="mb-4">
+                            <!-- Icon (Code SVG) -->
+                            <svg class="h-10 w-10 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-light mb-2">Mobile & Web App Development</h3>
+                        <p class="text-gray-400">Full-cycle development from concept to launch, specializing in robust, scalable, and user-centric mobile and web applications.</p>
+                    </div>
+
+                    <!-- Service Card 2: UI/UX Design & Strategy -->
+                    <div class="p-6 bg-card rounded-xl shadow-xl border border-gray-700 hover:border-secondary glow-hover fade-in" style="transition-delay: 100ms;">
+                        <div class="mb-4">
+                            <!-- Icon (Pencil/Design SVG) -->
+                            <svg class="h-10 w-10 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-light mb-2">UI/UX Design & Strategy</h3>
+                        <p class="text-gray-400">Creating intuitive and engaging user interfaces (UI) and user experiences (UX) that maximize adoption, satisfaction, and conversion.</p>
+                    </div>
+
+                    <!-- Service Card 3: Agile Project Management -->
+                    <div class="p-6 bg-card rounded-xl shadow-xl border border-gray-700 hover:border-secondary glow-hover fade-in" style="transition-delay: 200ms;">
+                        <div class="mb-4">
+                            <!-- Icon (Target/Efficiency SVG) -->
+                            <svg class="h-10 w-10 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 0a9 9 0 01-9-9m9 9a9 9 0 00-9 9m0-9h18"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-light mb-2">Agile Project Management</h3>
+                        <p class="text-gray-400">Employing flexible, sprint-based methodologies to ensure transparent delivery, fast iteration, and alignment with business goals.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section (Portfolio) -->
+        <section id="projects" class="py-20 bg-gray-900/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Our Portfolio</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-light sm:text-4xl">
+                        Featured Applications
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 fade-in">
+                    
+                    <!-- Project Card 1: Aura Build File Renamer (KEPT) -->
+                    <div class="relative overflow-hidden rounded-xl shadow-2xl group glow-hover">
+                        <img src="https://placehold.co/600x400/4f46e5/06b6d4?text=Custom+App+Tool" alt="Aura Build File Renamer Tool" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-primary bg-opacity-80 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition duration-500">
+                            <h3 class="text-2xl font-bold text-secondary mb-2">File Renamer App</h3>
+                            <p class="text-sm text-white">Custom desktop application for high-volume file batch renaming, solving a critical document control need for enterprise clients.</p>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 & 3: Coming Soon (SPANS 2 COLUMNS) -->
+                    <div class="md:col-span-2 flex items-center justify-center p-8 bg-card rounded-xl shadow-2xl border-4 border-dashed border-secondary transition duration-300 hover:scale-[1.01] hover:shadow-secondary/30">
+                        <div class="text-center">
+                            <svg class="mx-auto h-12 w-12 text-secondary animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <p class="mt-2 text-3xl font-extrabold text-secondary">More Apps Coming Soon</p>
+                            <p class="mt-1 text-lg text-gray-400">New case studies showcasing our mobile and web app solutions are currently being prepared.</p>
+                            <p class="text-sm text-gray-500 mt-4">Stay tuned for portfolio updates!</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Us Section -->
+        <section id="about" class="py-20 bg-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-12 lg:gap-8 fade-in">
+                    <div class="lg:col-span-6">
+                        <h2 class="text-base text-secondary font-semibold tracking-wide uppercase">About Aura Build Studio</h2>
+                        <p class="mt-2 text-3xl font-extrabold text-light sm:text-4xl">
+                            Driven by Innovation. Defined by Quality Code.
+                        </p>
+                    </div>
+                    <div class="mt-6 lg:mt-0 lg:col-span-6">
+                        <p class="text-lg text-gray-400">
+                            Founded by Nivin Varkey, Aura Build Studio was established with a singular vision: to bring efficiency, transparency, and digital intelligence to the software development process. We focus on building custom, high-performance applications that streamline operations and enhance user engagement.
+                        </p>
+                        <p class="mt-4 text-lg text-gray-400">
+                            Our expertise spans native mobile development, complex backend systems, and user-centric design, ensuring we deliver strategic digital value for our clients, from custom tools like the File Renamer to full enterprise platforms.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-900/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 fade-in">
+                    <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Get In Touch</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-light sm:text-4xl">
+                        Let's Discuss Your Next App Idea
+                    </p>
+                </div>
+                
+                <div class="max-w-xl mx-auto bg-card p-8 rounded-xl shadow-2xl border border-gray-700 fade-in">
+                    <form action="#" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-light">Full Name</label>
+                            <input type="text" name="name" id="name" autocomplete="name" class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm focus:ring-secondary focus:border-secondary bg-gray-800 text-light">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-light">Email</label>
+                            <input type="email" name="email" id="email" autocomplete="email" class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm focus:ring-secondary focus:border-secondary bg-gray-800 text-light">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-light">Project Details</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm focus:ring-secondary focus:border-secondary bg-gray-800 text-light"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-lg font-medium text-dark bg-secondary hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition duration-300 glow-hover">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                    <div class="mt-6 text-center">
+                         <p class="text-gray-400">Or contact us directly:</p>
+                         <p class="font-bold text-secondary mt-1">Email: nvnivinvarkey@outlook.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-card">
+        <div class="max-w-7xl mx-auto py-8 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <p class="text-center text-base text-gray-400">
+                &copy; 2025 Aura Build Studio. All rights reserved. | Developed by Nivin Varkey.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Simple smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in scroll animation
+        const faders = document.querySelectorAll(".fade-in");
+
+        const appearOptions = {
+            threshold: 0,
+            rootMargin: "0px 0px -150px 0px" // Start 150px before element hits bottom of viewport
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+                entry.target.classList.add("visible");
+                appearOnScroll.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
+</body>
+</html>
