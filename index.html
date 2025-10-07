@@ -1,283 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aura Build Studio - App Development</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-    body { font-family: 'Inter', sans-serif; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Build Studio - App Development</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    body { font-family: 'Inter', sans-serif; }
 
-    :root {
-      --color-primary: #4f46e5;
-      --color-secondary: #06b6d4;
-      --color-background: #0f172a;
-      --color-card-bg: #1e293b;
-      --color-text: #e2e8f0;
-    }
-    .bg-primary { background-color: var(--color-primary); }
-    .text-primary { color: var(--color-primary); }
-    .bg-secondary { background-color: var(--color-secondary); }
-    .text-secondary { color: var(--color-secondary); }
-    .hover\:bg-primary-dark:hover { background-color: #4338ca; }
-    .bg-dark { background-color: var(--color-background); }
-    .text-light { color: var(--color-text); }
-    .bg-card { background-color: var(--color-card-bg); }
-    .border-secondary { border-color: var(--color-secondary); }
-    .ring-secondary { --tw-ring-color: var(--color-secondary); }
+    :root {
+      --color-primary: #4f46e5;
+      --color-secondary: #06b6d4;
+      --color-background: #0f172a;
+      --color-card-bg: #1e293b;
+      --color-text: #e2e8f0;
+    }
+    .bg-primary { background-color: var(--color-primary); }
+    .text-primary { color: var(--color-primary); }
+    .bg-secondary { background-color: var(--color-secondary); }
+    .text-secondary { color: var(--color-secondary); }
+    .hover\:bg-primary-dark:hover { background-color: #4338ca; }
+    .bg-dark { background-color: var(--color-background); }
+    .text-light { color: var(--color-text); }
+    .bg-card { background-color: var(--color-card-bg); }
+    .border-secondary { border-color: var(--color-secondary); }
+    .ring-secondary { --tw-ring-color: var(--color-secondary); }
 
-    .glow-hover {
-      transition: all 0.3s ease-in-out;
-    }
-    .glow-hover:hover {
-      box-shadow: 0 0 10px var(--color-secondary), 0 0 20px rgba(6, 182, 212, 0.5);
-      transform: translateY(-2px);
-    }
+    .glow-hover {
+      transition: all 0.3s ease-in-out;
+    }
+    .glow-hover:hover {
+      box-shadow: 0 0 10px var(--color-secondary), 0 0 20px rgba(6, 182, 212, 0.5);
+      transform: translateY(-2px);
+    }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 
 <body class="bg-dark text-light">
 
-    <header class="sticky top-0 z-50 bg-card shadow-xl shadow-black/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
-        <div class="flex justify-start lg:w-0 lg:flex-1">
-          <a href="#" class="flex items-center space-x-2">
-            <span class="text-3xl font-extrabold text-dark bg-secondary p-2 rounded-lg">AB</span>
-            <span class="text-2xl font-bold text-light">Aura Build Studio</span>
-          </a>
-        </div>
+  <!-- Navigation -->
+  <header class="sticky top-0 z-50 bg-card shadow-xl shadow-black/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+        <div class="flex justify-start lg:w-0 lg:flex-1">
+          <a href="#" class="flex items-center space-x-2">
+            <span class="text-3xl font-extrabold text-dark bg-secondary p-2 rounded-lg">AB</span>
+            <span class="text-2xl font-bold text-light">Aura Build Studio</span>
+          </a>
+        </div>
 
-        <nav id="nav-menu" class="hidden md:flex space-x-6 items-center">
-          <a href="#services" class="text-base font-medium text-gray-400 hover:text-secondary">Services</a>
-          <a href="#projects" class="text-base font-medium text-gray-400 hover:text-secondary">Portfolio</a>
-          <a href="#about" class="text-base font-medium text-gray-400 hover:text-secondary">About Us</a>
-          <a href="#contact" class="text-base font-medium text-gray-400 hover:text-secondary">Contact</a>
-                    <a href="#projects"
-             class="text-base font-medium text-secondary bg-primary px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
-            Download Apps
-          </a>
-        </nav>
+        <nav id="nav-menu" class="hidden md:flex space-x-6 items-center">
+          <a href="#services" class="text-base font-medium text-gray-400 hover:text-secondary">Services</a>
+          <a href="#projects" class="text-base font-medium text-gray-400 hover:text-secondary">Portfolio</a>
+          <a href="#about" class="text-base font-medium text-gray-400 hover:text-secondary">About Us</a>
+          <a href="#contact" class="text-base font-medium text-gray-400 hover:text-secondary">Contact</a>
+          <a href="https://1drv.ms/u/c/f92e4b6c132765b9/ERxgqGgyor9CmhKP1DQG8MABC6OdgaJ9XL8EQgEqU-5-4g?e=NSrtY7"
+             class="text-base font-medium text-secondary bg-primary px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+             target="_blank" download>
+            Download App
+          </a>
+        </nav>
 
-        <div class="md:hidden">
-          <button id="mobile-menu-btn" type="button"
-            class="bg-card rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-secondary focus:outline-none focus:ring-2 focus:ring-inset ring-secondary">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
+        <div class="md:hidden">
+          <button id="mobile-menu-btn" type="button"
+            class="bg-card rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-secondary focus:outline-none focus:ring-2 focus:ring-inset ring-secondary">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
 
-        <div id="mobile-menu" class="hidden absolute top-16 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-      <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-card divide-y-2 divide-gray-700">
-        <div class="pt-5 pb-6 px-5 space-y-6">
-          <a href="#services" class="block px-3 py-2 rounded-md hover:text-secondary hover:bg-gray-800">Services</a>
-          <a href="#projects" class="block px-3 py-2 rounded-md hover:text-secondary hover:bg-gray-800">Portfolio</a>
-          <a href="#about" class="block px-3 py-2 rounded-md hover:text-secondary hover:bg-gray-800">About Us</a>
-          <a href="#contact" class="block px-3 py-2 rounded-md hover:text-secondary hover:bg-gray-800">Contact</a>
-                    <a href="#projects"
-             class="block px-3 py-2 rounded-md text-secondary hover:text-light hover:bg-gray-800">
-            Download Apps
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden absolute top-16 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+      <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-card divide-y-2 divide-gray-700">
+        <div class="pt-5 pb-6 px-5 space-y-6">
+          <a href="#services" class="block px-3 py-2 rounded-md hover:text-secondary hover:bg-gray-800">Services</a>
+          <a href="#projects" class="block px-3 py-2 rounded-md hover:text-secondary hover:bg-gray-800">Portfolio</a>
+          <a href="#about" class="block px-3 py-2 rounded-md hover:text-secondary hover:bg-gray-800">About Us</a>
+          <a href="#contact" class="block px-3 py-2 rounded-md hover:text-secondary hover:bg-gray-800">Contact</a>
+          <a href="https://1drv.ms/u/c/f92e4b6c132765b9/ERxgqGgyor9CmhKP1DQG8MABC6OdgaJ9XL8EQgEqU-5-4g?e=NSrtY7"
+             class="block px-3 py-2 rounded-md text-secondary hover:text-light hover:bg-gray-800"
+             target="_blank" download>
+            Download App
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-  <main>
+  <main>
 
-        <section class="relative pt-24 pb-40 overflow-hidden bg-primary shadow-2xl">
-      <div class="absolute inset-0 z-0 opacity-20" style="
-          background: linear-gradient(0deg, var(--color-primary) 0%, transparent 100%),
-                      repeating-linear-gradient(0deg, rgba(6, 182, 212, 0.2) 0px, rgba(6, 182, 212, 0.2) 1px, transparent 1px, transparent 100px),
-                      repeating-linear-gradient(90deg, rgba(6, 182, 212, 0.2) 0px, rgba(6, 182, 212, 0.2) 1px, transparent 1px, transparent 100px);
-        "></div>
+    <!-- Hero -->
+    <section class="relative pt-24 pb-40 overflow-hidden bg-primary shadow-2xl">
+      <div class="absolute inset-0 z-0 opacity-20" style="
+          background: linear-gradient(0deg, var(--color-primary) 0%, transparent 100%),
+                      repeating-linear-gradient(0deg, rgba(6, 182, 212, 0.2) 0px, rgba(6, 182, 212, 0.2) 1px, transparent 1px, transparent 100px),
+                      repeating-linear-gradient(90deg, rgba(6, 182, 212, 0.2) 0px, rgba(6, 182, 212, 0.2) 1px, transparent 1px, transparent 100px);
+        "></div>
 
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 fade-in text-center">
-        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
-          Developing <span class="text-secondary">Innovation</span>, <br>Line by Digital Line.
-        </h1>
-        <p class="mt-3 max-w-md mx-auto text-lg text-indigo-200 sm:text-xl md:max-w-3xl">
-          Aura Build Studio delivers tailored mobile, web, and enterprise applications to drive digital transformation.
-        </p>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 fade-in text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
+          Developing <span class="text-secondary">Innovation</span>, <br>Line by Digital Line.
+        </h1>
+        <p class="mt-3 max-w-md mx-auto text-lg text-indigo-200 sm:text-xl md:max-w-3xl">
+          Aura Build Studio delivers tailored mobile, web, and enterprise applications to drive digital transformation.
+        </p>
 
-        <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
-          <div class="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-            <a href="#contact"
-              class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-xl text-dark bg-secondary hover:bg-cyan-400 md:py-4 md:text-lg md:px-10 shadow-lg glow-hover transition duration-300">
-              Start Your App Project
-            </a>
+        <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
+          <div class="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
+            <a href="#contact"
+              class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-xl text-dark bg-secondary hover:bg-cyan-400 md:py-4 md:text-lg md:px-10 shadow-lg glow-hover transition duration-300">
+              Start Your App Project
+            </a>
 
-            <a href="#services"
-              class="flex items-center justify-center px-8 py-3 border border-secondary text-base font-medium rounded-xl text-secondary bg-transparent hover:bg-white/10 md:py-4 md:text-lg md:px-10 shadow-lg glow-hover transition duration-300">
-              View Our Services
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+            <a href="#services"
+              class="flex items-center justify-center px-8 py-3 border border-secondary text-base font-medium rounded-xl text-secondary bg-transparent hover:bg-white/10 md:py-4 md:text-lg md:px-10 shadow-lg glow-hover transition duration-300">
+              View Our Services
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section id="services" class="py-20 bg-dark">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
-        <h2 class="text-base text-secondary font-semibold uppercase">Our Expertise</h2>
-        <p class="mt-2 text-3xl font-extrabold text-light sm:text-4xl">Crafting Digital Experiences</p>
-      </div>
+    <!-- Services -->
+    <section id="services" class="py-20 bg-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+        <h2 class="text-base text-secondary font-semibold uppercase">Our Expertise</h2>
+        <p class="mt-2 text-3xl font-extrabold text-light sm:text-4xl">Crafting Digital Experiences</p>
+      </div>
 
-      <div class="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3">
-        <div class="p-6 bg-card rounded-xl shadow-xl border border-gray-700 hover:border-secondary glow-hover fade-in">
-          <svg class="h-10 w-10 text-secondary mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-          </svg>
-          <h3 class="text-xl font-bold text-light mb-2">Mobile & Web App Development</h3>
-          <p class="text-gray-400">Full-cycle development from concept to launch, specializing in scalable, user-centric applications.</p>
-          </div>
+      <div class="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3">
+        <div class="p-6 bg-card rounded-xl shadow-xl border border-gray-700 hover:border-secondary glow-hover fade-in">
+          <svg class="h-10 w-10 text-secondary mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+          </svg>
+          <h3 class="text-xl font-bold text-light mb-2">Mobile & Web App Development</h3>
+          <p class="text-gray-400">Full-cycle development from concept to launch, specializing in scalable, user-centric applications.</p>
+        </div>
 
-        <div class="p-6 bg-card rounded-xl shadow-xl border border-gray-700 hover:border-secondary glow-hover fade-in">
-          <svg class="h-10 w-10 text-secondary mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-          </svg>
-          <h3 class="text-xl font-bold text-light mb-2">UI/UX Design & Strategy</h3>
-          <p class="text-gray-400">Intuitive and engaging UI/UX that maximizes adoption, satisfaction, and conversion.</p>
-        </div>
+        <div class="p-6 bg-card rounded-xl shadow-xl border border-gray-700 hover:border-secondary glow-hover fade-in">
+          <svg class="h-10 w-10 text-secondary mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+          <h3 class="text-xl font-bold text-light mb-2">UI/UX Design & Strategy</h3>
+          <p class="text-gray-400">Intuitive and engaging UI/UX that maximizes adoption, satisfaction, and conversion.</p>
+        </div>
 
-        <div class="p-6 bg-card rounded-xl shadow-xl border border-gray-700 hover:border-secondary glow-hover fade-in">
-          <svg class="h-10 w-10 text-secondary mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 0a9 9 0 01-9-9m9 9a9 9 0 00-9 9m0-9h18"></path>
-          </svg>
-          <h3 class="text-xl font-bold text-light mb-2">Agile Project Management</h3>
-          <p class="text-gray-400">Flexible sprint-based methodologies ensuring fast iteration and transparent delivery.</p>
-        </div>
-      </div>
-    </section>
+        <div class="p-6 bg-card rounded-xl shadow-xl border border-gray-700 hover:border-secondary glow-hover fade-in">
+          <svg class="h-10 w-10 text-secondary mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 0a9 9 0 01-9-9m9 9a9 9 0 00-9 9m0-9h18"></path>
+          </svg>
+          <h3 class="text-xl font-bold text-light mb-2">Agile Project Management</h3>
+          <p class="text-gray-400">Flexible sprint-based methodologies ensuring fast iteration and transparent delivery.</p>
+        </div>
+      </div>
+    </section>
 
-        <section id="projects" class="py-20 bg-gray-900/50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
-                <h2 class="text-base text-primary font-semibold uppercase">Downloads & Portfolio</h2>
-        <p class="mt-2 text-3xl font-extrabold text-light sm:text-4xl">Featured Applications Available Now</p>
-      </div>
+    <!-- Projects -->
+    <section id="projects" class="py-20 bg-gray-900/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+        <h2 class="text-base text-primary font-semibold uppercase">Our Portfolio</h2>
+        <p class="mt-2 text-3xl font-extrabold text-light sm:text-4xl">Featured Applications</p>
+      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 fade-in">
-        <div class="relative overflow-hidden rounded-xl shadow-2xl group glow-hover">
-          <img src="https://placehold.co/600x400/4f46e5/06b6d4?text=Custom+App+Tool"
-            alt="Aura Build File Renamer Tool"
-            class="w-full h-64 object-cover transition duration-500 group-hover:scale-105">
-          <div
-            class="absolute inset-0 bg-primary bg-opacity-80 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition duration-500">
-            <h3 class="text-2xl font-bold text-secondary mb-2">File Renamer App</h3>
-            <p class="text-sm text-white">Custom desktop application for batch file renaming, solving document control challenges.</p>
-                        <a href="https://1drv.ms/u/c/f92e4b6c132765b9/ERxgqGgyor9CmhKP1DQG8MABC6OdgaJ9XL8EQgEqU-5-4g?e=NSrtY7"
-               class="mt-3 inline-block px-4 py-2 text-sm font-bold text-dark bg-secondary rounded-lg hover:bg-cyan-400 transition"
-               target="_blank" download>
-              ⬇️ Download App
-            </a>
-          </div>
-        </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 fade-in">
+        <div class="relative overflow-hidden rounded-xl shadow-2xl group glow-hover">
+          <img src="https://placehold.co/600x400/4f46e5/06b6d4?text=Custom+App+Tool"
+            alt="Aura Build File Renamer Tool"
+            class="w-full h-64 object-cover transition duration-500 group-hover:scale-105">
+          <div
+            class="absolute inset-0 bg-primary bg-opacity-80 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition duration-500">
+            <h3 class="text-2xl font-bold text-secondary mb-2">File Renamer App</h3>
+            <p class="text-sm text-white">Custom desktop application for batch file renaming, solving document control challenges.</p>
+            <a href="https://1drv.ms/u/c/f92e4b6c132765b9/ERxgqGgyor9CmhKP1DQG8MABC6OdgaJ9XL8EQgEqU-5-4g?e=NSrtY7"
+               class="mt-3 inline-block px-4 py-2 text-sm font-bold text-dark bg-secondary rounded-lg hover:bg-cyan-400 transition"
+               target="_blank" download>
+              ⬇️ Download App
+            </a>
+          </div>
+        </div>
 
-        <div
-          class="md:col-span-2 flex items-center justify-center p-8 bg-card rounded-xl shadow-2xl border-4 border-dashed border-secondary hover:scale-[1.01] transition duration-300">
-          <div class="text-center">
-            <svg class="mx-auto h-12 w-12 text-secondary animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-            <p class="mt-2 text-3xl font-extrabold text-secondary">More Apps Coming Soon</p>
-            <p class="mt-1 text-lg text-gray-400">New case studies showcasing mobile and web solutions are being prepared.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div
+          class="md:col-span-2 flex items-center justify-center p-8 bg-card rounded-xl shadow-2xl border-4 border-dashed border-secondary hover:scale-[1.01] transition duration-300">
+          <div class="text-center">
+            <svg class="mx-auto h-12 w-12 text-secondary animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <p class="mt-2 text-3xl font-extrabold text-secondary">More Apps Coming Soon</p>
+            <p class="mt-1 text-lg text-gray-400">New case studies showcasing mobile and web solutions are being prepared.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section id="about" class="py-20 bg-dark fade-in">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
-        <div class="lg:col-span-6">
-          <h2 class="text-base text-secondary font-semibold uppercase">About Aura Build Studio</h2>
-          <p class="mt-2 text-3xl font-extrabold text-light sm:text-4xl">
-            Driven by Innovation. Defined by Quality Code.
-          </p>
-        </div>
-        <div class="mt-6 lg:mt-0 lg:col-span-6 text-lg text-gray-400">
-          <p>
-            Founded by Nivin Varkey, Aura Build Studio brings efficiency and intelligence to the software
-            development process. We build custom, high-performance apps that enhance operations and engagement.
-          </p>
-          <p class="mt-4">
-            Our expertise spans native mobile, complex back-ends, and user-centric design, ensuring strategic digital value for every client.
-          </p>
-        </div>
-      </div>
-    </section>
+    <!-- About -->
+    <section id="about" class="py-20 bg-dark fade-in">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
+        <div class="lg:col-span-6">
+          <h2 class="text-base text-secondary font-semibold uppercase">About Aura Build Studio</h2>
+          <p class="mt-2 text-3xl font-extrabold text-light sm:text-4xl">
+            Driven by Innovation. Defined by Quality Code.
+          </p>
+        </div>
+        <div class="mt-6 lg:mt-0 lg:col-span-6 text-lg text-gray-400">
+          <p>
+            Founded by Nivin Varkey, Aura Build Studio brings efficiency and intelligence to the software
+            development process. We build custom, high-performance apps that enhance operations and engagement.
+          </p>
+          <p class="mt-4">
+            Our expertise spans native mobile, complex back-ends, and user-centric design, ensuring strategic digital value for every client.
+          </p>
+        </div>
+      </div>
+    </section>
 
-        <section id="contact" class="py-20 bg-gray-900/50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
-        <h2 class="text-base text-primary font-semibold uppercase">Get In Touch</h2>
-        <p class="mt-2 text-3xl font-extrabold text-light sm:text-4xl">Let's Discuss Your Next App Idea</p>
-      </div>
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-gray-900/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+        <h2 class="text-base text-primary font-semibold uppercase">Get In Touch</h2>
+        <p class="mt-2 text-3xl font-extrabold text-light sm:text-4xl">Let's Discuss Your Next App Idea</p>
+      </div>
 
-      <div class="max-w-xl mx-auto bg-card p-8 rounded-xl shadow-2xl border border-gray-700 fade-in">
-        <form action="#" method="POST" class="space-y-6">
-          <div>
-            <label for="name" class="block text-sm font-medium text-light">Full Name</label>
-            <input id="name" name="name" type="text" class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-800 text-light focus:ring-secondary focus:border-secondary">
-          </div>
-          <div>
-            <label for="email" class="block text-sm font-medium text-light">Email</label>
-            <input id="email" name="email" type="email" class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-800 text-light focus:ring-secondary focus:border-secondary">
-          </div>
-          <div>
-            <label for="message" class="block text-sm font-medium text-light">Project Details</label>
-            <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-800 text-light focus:ring-secondary focus:border-secondary"></textarea>
-          </div>
-          <button type="submit" class="w-full py-3 px-4 rounded-xl text-lg font-medium text-dark bg-secondary hover:bg-cyan-400 glow-hover transition duration-300">
-            Send Message
-          </button>
-        </form>
-        <div class="mt-6 text-center">
-          <p class="text-gray-400">Or contact us directly:</p>
-          <p class="font-bold text-secondary mt-1">Email: nvnivinvarkey@outlook.com</p>
-        </div>
-      </div>
-    </section>
-  </main>
+      <div class="max-w-xl mx-auto bg-card p-8 rounded-xl shadow-2xl border border-gray-700 fade-in">
+        <form action="#" method="POST" class="space-y-6">
+          <div>
+            <label for="name" class="block text-sm font-medium text-light">Full Name</label>
+            <input id="name" name="name" type="text" class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-800 text-light focus:ring-secondary focus:border-secondary">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-light">Email</label>
+            <input id="email" name="email" type="email" class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-800 text-light focus:ring-secondary focus:border-secondary">
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-light">Project Details</label>
+            <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-800 text-light focus:ring-secondary focus:border-secondary"></textarea>
+          </div>
+          <button type="submit" class="w-full py-3 px-4 rounded-xl text-lg font-medium text-dark bg-secondary hover:bg-cyan-400 glow-hover transition duration-300">
+            Send Message
+          </button>
+        </form>
+        <div class="mt-6 text-center">
+          <p class="text-gray-400">Or contact us directly:</p>
+          <p class="font-bold text-secondary mt-1">Email: nvnivinvarkey@outlook.com</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <footer class="bg-card">
-    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-400">
-      &copy; 2025 Aura Build Studio. All rights reserved. | Developed by Nivin Varkey.
-    </div>
-  </footer>
+  <footer class="bg-card">
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+      &copy; 2025 Aura Build Studio. All rights reserved. | Developed by Nivin Varkey.
+    </div>
+  </footer>
 
-  <script>
-    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.toggle('hidden');
-    });
+  <script>
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
 
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
 
-    fadeEls.forEach(el => observer.observe(el));
-  </script>
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
